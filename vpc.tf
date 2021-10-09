@@ -1,9 +1,6 @@
-terraform {
-  required_version = ">= 0.12.0"
-}
+
 provider "aws" {
   region = "us-east-1"
-  version = ">= 3.0.0"
 }
 
 provider "kubernetes" {
@@ -20,12 +17,12 @@ data "aws_eks_cluster_auth" "eks" {
   name = module.eks.cluster_id
 }
 
-data "aws_availability_zone" "available" {  
-}
+# data "aws_availability_zone" "available" {  
+# }
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "3.7.0"
+
   name = "my-vpc"
   cidr = "10.0.0.0/16"
 
@@ -37,7 +34,7 @@ module "vpc" {
   single_nat_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
