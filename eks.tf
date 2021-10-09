@@ -3,8 +3,8 @@ module "eks" {
   version         = "17.20.0"
   cluster_version = "1.21"
   cluster_name    = "my-cluster"
-  vpc_id          = local.vpc.vpc_id
-  subnets         = [local.vpc.private_subnets[0], local.vpc.public_subnets[1]]
+  vpc_id          = module.vpc.vpc_id
+  subnets         = [module.vpc.private_subnets[0], module.vpc.public_subnets[1]]
 
   node_groups = {
     public = {
